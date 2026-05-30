@@ -1,1 +1,34 @@
-/.venv/
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.pdb
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+
+# Ruff
+.ruff_cache/
+
+# Build artifacts
+build/
+dist/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
