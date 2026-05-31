@@ -44,10 +44,7 @@ jobs:
     #- name: Run tests (pytest)
     #    run: python -m pytest --cov-fail-under=80
 
-    #- name: Security scan (bandit)
-    #    run: python -m pip install bandit && python -m bandit -q -r src/
-
-    #- name: Dependency scan (pip-audit)
-    #  run: | 
-    #    pip install bandit 
-    #    python -m bandit -q -r .
+    - name: Dependency scan (pip-audit)
+      run: | 
+        pip install bandit 
+        python -m bandit -q -r .
