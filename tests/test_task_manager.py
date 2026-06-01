@@ -76,8 +76,15 @@ def test_complete_task_marks_done(tmp_path: Path) -> None:
     assert completed["done"] is True
 
 
-def test_complete_task_unknown_id_raises(tmp_path: Path) -> None:
+def test_complete_task_unknown_id_empty_list_raises(tmp_path: Path) -> None:
     manager = _manager(tmp_path)
+    with pytest.raises(ValueError, match="no encontrada"):
+        manager.complete_task(99)
+
+
+def test_complete_task_unknown_id_existing_tasks_raises(tmp_path: Path) -> None:
+    manager = _manager(tmp_path)
+    manager.add_task("Tarea")
     with pytest.raises(ValueError, match="no encontrada"):
         manager.complete_task(99)
 
