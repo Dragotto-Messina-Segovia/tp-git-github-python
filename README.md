@@ -85,7 +85,7 @@ sobre `task_manager.py` y `app.py`, con un umbral mínimo del 80% (configurado e
 # corre todos los tests con reporte de cobertura
 python -m pytest
 
-# falla cuando la cobertura es menor que el 80%
+# falla cuando la cobertura es < 80%
 python -m pytest --cov-fail-under=80
 ```
 
