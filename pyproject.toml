@@ -15,6 +15,8 @@ dev = [
   "pytest-cov>=5",
   "ruff>=0.6",
   "mypy>=1",
+  "pylint>=3",
+  "pylint-pytest>=1.1",
 ]
 
 [tool.setuptools]
@@ -27,17 +29,21 @@ addopts = [
   "--strict-markers",
   "--strict-config",
   "--cov=task_manager",
+  "--cov=app",
   "--cov-report=term-missing",
 ]
 testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["task_manager"]
+source = ["task_manager", "app"]
 
 [tool.coverage.report]
 skip_covered = true
 show_missing = true
+exclude_also = [
+  'if __name__ == "__main__":',
+]
 
 [tool.ruff]
 line-length = 88
@@ -63,5 +69,15 @@ line-ending = "lf"
 
 [tool.mypy]
 python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
+strict = true
+
+[tool.pylint.main]
+load-plugins = ["pylint_pytest"]
+
+[tool.pylint.messages_control]
+disable = [
+  "C0114", # missing-module-docstring
+  "C0115", # missing-class-docstring
+  "C0116", # missing-function-docstring
+  "R0903", # too-few-public-methods
+]
