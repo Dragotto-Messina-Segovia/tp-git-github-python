@@ -59,14 +59,35 @@ Las tareas se persisten en `tasks.json` en el directorio del proyecto.
 ## Formato, lint y tipos
 
 ```bash
+# formatea el código
 python -m ruff format .
+
+# verifica formato sin modificar (como en CI)
+python -m ruff format --check .
+
+# linter rápido (pyflakes, pycodestyle, isort, etc.)
 python -m ruff check .
-python -m mypy .
+
+# chequeo de tipos (modo strict)
+python -m mypy app.py task_manager.py
+
+# linter más exhaustivo
+python -m pylint app.py task_manager.py tests/
 ```
 
-## Tests (pendiente)
+## Tests
 
-Este apartado queda reservado para cuando se complete la implementación de tests y cobertura.
+Los tests están en `tests/` y se ejecutan con `pytest`. La cobertura se mide
+sobre `task_manager.py` y `app.py`, con un umbral mínimo del 80% (configurado en
+`pyproject.toml`).
+
+```bash
+# corre todos los tests con reporte de cobertura
+python -m pytest
+
+# falla si la cobertura baja del 80% (como en CI)
+python -m pytest --cov-fail-under=80
+```
 
 
 ## CI (GitHub Actions)

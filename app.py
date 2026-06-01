@@ -1,8 +1,9 @@
 import sys
+
 from task_manager import TaskManager
 
 
-def main():
+def main() -> None:
     manager = TaskManager()
 
     if len(sys.argv) < 2:
@@ -33,11 +34,7 @@ def main():
 
             for task in tasks:
                 status = "✓" if task["done"] else "X"
-                print(
-                    f"#{task['id']} - "
-                    f"[{status}] "
-                    f"{task['description']}"
-                )
+                print(f"#{task['id']} - [{status}] {task['description']}")
 
         elif command == "done":
             task_id = int(sys.argv[2])
